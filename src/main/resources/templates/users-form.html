@@ -1,34 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html
+    lang="en"
+    xmlns:th="http://thymeleaf.org"
+    th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
+>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=, shrink-to-fit=no"
-        />
         <title>Nova Tarefa</title>
     </head>
     <body>
-        <h1>EPIC TASK</h1>
-        <h2>Nova Tarefa</h2>
+        <div id="content">
+            <h2>Nova Tarefa</h2>
 
-        <form action="/user" method="POST" th:object="${user}">
-            <label for="email">Email</label>
-            <input id="email" name="email" th:field="*{email}" />
-            <span th:errors="*{email}"></span>
+            <form action="/user" method="POST" th:object="${user}">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input id="name" name="name" th:field="*{name}" />
+                    <span th:errors="*{name}" class="has-error"></span>
+                </div>
 
-            <label for="password">Senha</label>
-            <input
-                id="password"
-                name="password"
-                type="password"
-                th:field="*{password}"
-            />
-            <span th:errors="*{password}"></span>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" th:field="*{email}" />
+                    <span th:errors="*{email}" class="has-error"></span>
+                </div>
 
-            <a href="/user">Cancelar</a>
-            <button>Salvar</button>
-        </form>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        th:field="*{password}"
+                    />
+                    <span th:errors="*{password}" class="has-error"></span>
+                </div>
+
+                <a href="/user">Cancelar</a>
+                <button>Salvar</button>
+            </form>
+        </div>
     </body>
 </html>

@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html
+    lang="en"
+    xmlns:th="http://thymeleaf.org"
+    th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
+>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=, shrink-to-fit=no"
-        />
         <title>Usuários</title>
     </head>
     <body>
-        <h1>EPIC TASK</h1>
-        <h2>Usuários</h2>
+        <div id="content">
+            <h2>Usuários</h2>
 
-        <a href="/user/new">Novo usuário</a>
+            <a href="/user/new">Novo usuário</a>
 
-        <ul th:each="user : ${users}">
-            <li>
-                <p th:text="${user.email}"></p>
-            </li>
-        </ul>
+            <ul th:each="user : ${users}">
+                <li>
+                    <div style="display: flex; gap: 5px; align-items: center">
+                        <span>Nome: </span>
+                        <p th:text="${user.name}"></p>
+                    </div>
+                    <div style="display: flex; gap: 5px; align-items: center">
+                        <span>E-mail: </span>
+                        <p th:text="${user.email}"></p>
+                    </div>
+                    <div style="display: flex; gap: 5px; align-items: center">
+                        <span>Senha: </span>
+                        <p th:text="${user.password}"></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </body>
 </html>

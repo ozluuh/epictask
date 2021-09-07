@@ -1,0 +1,8 @@
+.form-group {
+  margin-bottom: 10px;
+}
+
+.has-error {
+  color: red;
+  margin-left: 5px;
+}
