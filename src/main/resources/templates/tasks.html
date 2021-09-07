@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=, shrink-to-fit=no"
+        />
+        <title>Tarefas</title>
+    </head>
+    <body>
+        <h1>EPIC TASK</h1>
+        <h2>Tarefas</h2>
+
+        <a href="/task/new">Nova Tarefa</a>
+
+        <ul th:each="task : ${tasks}">
+            <li>
+                <p th:text="${task.title}"></p>
+                <p th:text="${task.description}"></p>
+                <p th:text="${task.points}"></p>
+                <button>Pegar</button>
+            </li>
+        </ul>
+    </body>
+</html>

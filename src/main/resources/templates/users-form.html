@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=, shrink-to-fit=no"
+        />
+        <title>Nova Tarefa</title>
+    </head>
+    <body>
+        <h1>EPIC TASK</h1>
+        <h2>Nova Tarefa</h2>
+
+        <form action="/user" method="POST" th:object="${user}">
+            <label for="email">Email</label>
+            <input id="email" name="email" th:field="*{email}" />
+            <span th:errors="*{email}"></span>
+
+            <label for="password">Senha</label>
+            <input
+                id="password"
+                name="password"
+                type="password"
+                th:field="*{password}"
+            />
+            <span th:errors="*{password}"></span>
+
+            <a href="/user">Cancelar</a>
+            <button>Salvar</button>
+        </form>
+    </body>
+</html>

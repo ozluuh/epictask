@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=, shrink-to-fit=no"
+        />
+        <title>Usuários</title>
+    </head>
+    <body>
+        <h1>EPIC TASK</h1>
+        <h2>Usuários</h2>
+
+        <a href="/user/new">Novo usuário</a>
+
+        <ul th:each="user : ${users}">
+            <li>
+                <p th:text="${user.email}"></p>
+            </li>
+        </ul>
+    </body>
+</html>
