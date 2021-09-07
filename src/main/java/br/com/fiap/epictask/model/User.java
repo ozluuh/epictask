@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -22,4 +23,7 @@ public class User {
 
 	@Size(min = 8, message = "Mínimo esperado de 8 caracteres")
 	private String password;
+
+	@NotBlank(message = "Nome deve ser preenchido")
+	private String name;
 }
