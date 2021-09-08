@@ -19,7 +19,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Email(message = "Informe um email válido", regexp = "^[A-z0-9]+@[A-z0-9]+\\.[A-z]{2,}\\.?[A-z]+$")
+	@Email(message = "Informe um email válido", regexp = "^[A-z0-9\\.]+@[A-z0-9]+\\.[A-z]{1,}\\.?[A-z]+$")
 	private String email;
 
 	@Size(min = 8, message = "Mínimo esperado de 8 caracteres")
