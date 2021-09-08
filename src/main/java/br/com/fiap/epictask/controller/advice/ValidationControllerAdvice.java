@@ -23,11 +23,11 @@ public class ValidationControllerAdvice {
 
 		ArrayList<ValidationFieldError> errors = new ArrayList<>();
 
-		e.getBindingResult().getFieldErrors().forEach(error -> {
-			errors.add(new ValidationFieldError(error.getField(), error.getDefaultMessage(), error.getRejectedValue())
-
-			);
-		});
+		e.getBindingResult()
+			.getFieldErrors()
+			.forEach(error ->
+				errors
+				.add(new ValidationFieldError(error.getField(), error.getDefaultMessage(), error.getRejectedValue())));
 
 		return errors;
 	}

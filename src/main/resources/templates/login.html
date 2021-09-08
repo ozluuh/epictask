@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+    lang="en"
+    xmlns:th="http://thymeleaf.org"
+    th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
+>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=, shrink-to-fit=no"
-        />
         <title>Login</title>
     </head>
     <body>
-        <h1>EPIC TASK</h1>
-        <h2>Login</h2>
+        <div id="content">
+            <h2>Login</h2>
 
-        <form action="" method="">
-            <label for="email">Email</label>
-            <input id="email" name="email" />
+            <form action="" method="" th:object="${user}">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" th:field="*{email}" />
+                    <span class="has-error"></span>
+                </div>
 
-            <label for="password">Senha</label>
-            <input id="password" name="password" type="password" />
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        th:field="*{password}"
+                    />
+                    <span class="has-error"></span>
+                </div>
 
-            <button>Entrar</button>
-        </form>
+                <button>Acessar</button>
+                <a href="/user/new">Registro</a>
+            </form>
+        </div>
     </body>
 </html>
