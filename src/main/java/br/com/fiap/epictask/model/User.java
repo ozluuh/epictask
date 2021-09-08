@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -25,5 +26,6 @@ public class User {
 	private String password;
 
 	@NotBlank(message = "Nome deve ser preenchido")
+	@Pattern(message = "Nome possui caractere inválido", regexp = "^[a-zA-ZÀ-ü\\s]+$")
 	private String name;
 }

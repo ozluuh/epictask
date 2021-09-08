@@ -41,15 +41,16 @@ public class ApiTaskController {
 	public Page<Task> index(@RequestParam(required = false) final String title,
 							@PageableDefault(size = 5) final Pageable pageable) {
 
-		if (title == null) return repo.findAll(pageable);
+		if (title == null) {
+			return repo.findAll(pageable);
+		}
 
 		return repo.findByTitleContains(title, pageable);
 	}
 
 	@PostMapping
 	@CacheEvict(value = CACHE_NAME, allEntries = true)
-	public ResponseEntity<Task> create(@RequestBody @Valid final Task task,
-										final UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<Task> create(@RequestBody @Valid final Task task, final UriComponentsBuilder uriBuilder) {
 		repo.save(task);
 
 		final URI uri = uriBuilder
@@ -69,7 +70,9 @@ public class ApiTaskController {
 	@CacheEvict(value = CACHE_NAME, allEntries = true)
 	public ResponseEntity<Task> update(@PathVariable final Long id,
 										@RequestBody @Valid final Task newTask) {
-		if(repo.findById(id).isEmpty()) return ResponseEntity.notFound().build();
+		if (repo.findById(id).isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 
 		newTask.setId(id);
 		var response = repo.save(newTask);
@@ -80,7 +83,9 @@ public class ApiTaskController {
 	@DeleteMapping("/{id}")
 	@CacheEvict(value = CACHE_NAME, allEntries = true)
 	public ResponseEntity<Object> destroy(@PathVariable final Long id) {
-		if(repo.findById(id).isEmpty()) return ResponseEntity.notFound().build();
+		if (repo.findById(id).isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 
 		repo.deleteById(id);
 

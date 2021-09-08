@@ -2,6 +2,10 @@ package br.com.fiap.epictask.controller.api;
 
 import java.net.URI;
 
+import javax.validation.Valid;
+
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -21,25 +25,36 @@ import br.com.fiap.epictask.model.User;
 import br.com.fiap.epictask.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class ApiUserController {
 
+	private static final String CACHE_NAME = "users";
 	private final UserRepository repo;
 
 	@GetMapping
+	@Cacheable(CACHE_NAME)
 	public Page<User> index(@RequestParam(required = false) final String email,
 							@PageableDefault(size = 5) final Pageable pageable) {
 
-		if(email == null) repo.findAll(pageable);
+		if(email == null) {
+			log.debug("Find with Request Param");
+			return repo.findAll(pageable);
+		}
 
+		log.debug("Find without Request Param");
 		return repo.findAllByEmailContains(email, pageable);
 	}
 
 	@PostMapping
-	public ResponseEntity<User> create(@RequestBody final User user, final UriComponentsBuilder uriBuilder) {
+	@CacheEvict(value = CACHE_NAME, allEntries = true)
+	public ResponseEntity<User> create(@RequestBody @Valid final User user, final UriComponentsBuilder uriBuilder) {
+		user.setName(user.getName().trim());
+
 		repo.save(user);
 
 		final URI uri = uriBuilder
@@ -56,17 +71,22 @@ public class ApiUserController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<User> update(@PathVariable final Long id, @RequestBody final User user) {
+	@CacheEvict(value = CACHE_NAME, allEntries = true)
+	public ResponseEntity<User> update(@PathVariable final Long id, @RequestBody  @Valid final User user) {
 		if(repo.findById(id).isEmpty()) return ResponseEntity.notFound().build();
 
-		repo.save(user);
+		user.setId(id);
+		var response = repo.save(user);
 
-		return ResponseEntity.ok(user);
+		return ResponseEntity.ok(response);
 	}
 
 	@DeleteMapping("/{id}")
+	@CacheEvict(value = CACHE_NAME, allEntries = true)
 	public ResponseEntity<Object> destroy(@PathVariable final Long id){
-		if(repo.findById(id).isEmpty()) return ResponseEntity.notFound().build();
+	if(repo.findById(id).isEmpty()){
+		return ResponseEntity.notFound().build();
+	}
 
 		repo.deleteById(id);
 
