@@ -1,6 +1,9 @@
 spring:
+  messages:
+    basename: locale/ui,locale/validation
+    encoding: UTF-8
   datasource:
-    url: "jdbc:h2:mem:epictask"
+    url: jdbc:h2:mem:epictask
   jpa:
     hibernate:
       ddl-auto: update
@@ -18,4 +21,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: "*"
