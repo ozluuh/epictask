@@ -39,7 +39,9 @@ public class UserController {
 	@PostMapping()
 	public String save(@Valid final User user, final BindingResult result) {
 
-		if(result.hasErrors()) return "users-form";
+		if (result.hasErrors()) {
+			return "users-form";
+		}
 
 		repository.save(user);
 		return "users";

@@ -38,8 +38,10 @@ public class ApiUserController {
 
 	@GetMapping
 	@Cacheable(CACHE_NAME)
-	public Page<User> index(@RequestParam(required = false) final String email,
-							@PageableDefault(size = 5) final Pageable pageable) {
+	public Page<User> index(
+			@RequestParam(required = false) final String email,
+			@PageableDefault(size = 5) final Pageable pageable
+	) {
 
 		if(email == null) {
 			log.debug("Find with Request Param");
@@ -52,7 +54,10 @@ public class ApiUserController {
 
 	@PostMapping
 	@CacheEvict(value = CACHE_NAME, allEntries = true)
-	public ResponseEntity<User> create(@RequestBody @Valid final User user, final UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<User> create(
+			@RequestBody @Valid final User user,
+			final UriComponentsBuilder uriBuilder
+	) {
 		user.setName(user.getName().trim());
 
 		repo.save(user);
@@ -66,14 +71,19 @@ public class ApiUserController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<User> show(@PathVariable final Long id){
+	public ResponseEntity<User> show(@PathVariable final Long id) {
 		return ResponseEntity.of(repo.findById(id));
 	}
 
 	@PutMapping("/{id}")
 	@CacheEvict(value = CACHE_NAME, allEntries = true)
-	public ResponseEntity<User> update(@PathVariable final Long id, @RequestBody  @Valid final User user) {
-		if(repo.findById(id).isEmpty()) return ResponseEntity.notFound().build();
+	public ResponseEntity<User> update(
+			@PathVariable final Long id,
+			@RequestBody  @Valid final User user
+	) {
+		if (repo.findById(id).isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 
 		user.setId(id);
 		var response = repo.save(user);
@@ -83,10 +93,10 @@ public class ApiUserController {
 
 	@DeleteMapping("/{id}")
 	@CacheEvict(value = CACHE_NAME, allEntries = true)
-	public ResponseEntity<Object> destroy(@PathVariable final Long id){
-	if(repo.findById(id).isEmpty()){
-		return ResponseEntity.notFound().build();
-	}
+	public ResponseEntity<Object> destroy(@PathVariable final Long id) {
+		if (repo.findById(id).isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
 
 		repo.deleteById(id);
 
