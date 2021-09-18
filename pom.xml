@@ -9,15 +9,19 @@
         <relativePath/>
         <!-- lookup parent from repository -->
     </parent>
+
     <groupId>br.com.fiap</groupId>
     <artifactId>epictask</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>epictask</name>
     <description>App de controle de tarefas gameficado</description>
+
     <properties>
         <java.version>11</java.version>
         <springfox.version>3.0.0</springfox.version>
+        <yaml-resource-bundle.version>2.0.2</yaml-resource-bundle.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -85,6 +89,13 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>dev.akkinoc.util</groupId>
+            <artifactId>yaml-resource-bundle</artifactId>
+            <version>${yaml-resource-bundle.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
