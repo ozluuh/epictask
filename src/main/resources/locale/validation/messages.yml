@@ -1,0 +1,21 @@
+validation:
+  task:
+    title:
+      not-blank: Title is required
+    description:
+      size-min-or-between: Size must be at least 10 characters long
+    score:
+      min: Minimum score is 10
+      max: Maximum score is 500
+    messages:
+      new-task-created: Task successfully created
+  user:
+    email:
+      valid: Enter a valid email
+    password:
+      size-min-or-between: Size must be at least 8 characters long
+    name:
+      not-blank: Name must be filled
+      pattern-matcher: Name has invalid characters
+    messages:
+      new-user-created: User successfully created

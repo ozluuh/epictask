@@ -25,7 +25,7 @@ public class MessageSourceConfig {
 			@Value("${spring.messages.encoding}") String encoding
 	) {
 		YamlMessageSource ms = new YamlMessageSource();
-		ms.setBasenames(basename);
+		ms.setBasenames(basename.split(","));
 		ms.setDefaultEncoding(encoding);
 		ms.setAlwaysUseMessageFormat(true);
 		ms.setUseCodeAsDefaultMessage(true);

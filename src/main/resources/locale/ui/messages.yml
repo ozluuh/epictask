@@ -1,0 +1,50 @@
+form:
+  title: Nova tarefa
+  input:
+    task: Título
+    description: Descrição
+    points: Pontos
+
+button:
+  cancel: Cancelar
+  save: Salvar
+
+newtask:
+  success: Tarefa cadastrada com sucesso
+
+
+ui:
+  global:
+    site:
+      lang: en
+      title: Epic Task # never translate this
+    navigation:
+      home: Home
+      users: Users
+      tasks: Tasks
+      ranking: Ranking
+    components:
+      buttons:
+        new-task: New Task
+        cancel: Cancel
+        save: Save
+  tasks:
+    home:
+      site:
+        title: Tasks
+      components:
+        buttons:
+          get-task: Get
+    create:
+      site:
+        title: New Task
+      components:
+        inputs:
+          task-title:
+            label: Title
+            placeholder: Type task title
+          task-description:
+            label: Description
+            placeholder: Enter task description
+          task-score:
+            label: Score
