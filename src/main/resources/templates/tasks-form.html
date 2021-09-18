@@ -1,33 +1,82 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html
+    lang="en"
+    xmlns:th="http://thymeleaf.org"
+    th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
+>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=, shrink-to-fit=no"
-        />
-        <title>Nova Tarefa</title>
+        <title th:text="#{ui.tasks.create.site.title}"></title>
     </head>
     <body>
-        <h1>EPIC TASK</h1>
-        <h2>Nova Tarefa</h2>
+        <div id="content">
+            <div class="card form">
+                <h2 th:text="#{ui.tasks.create.site.title}"></h2>
 
-        <form action="/task" method="POST" th:object="${task}">
-            <label for="title">Título</label>
-            <input id="title" name="title" th:field="*{title}" />
-            <span th:errors="*{title}"></span>
+                <form
+                    class="form-vertical"
+                    action="/task"
+                    method="POST"
+                    th:object="${task}"
+                >
+                    <label
+                        for="title"
+                        class="hide"
+                        th:text="#{ui.tasks.create.components.inputs.task-title.label}"
+                    ></label>
+                    <input
+                        th:classappend="${#fields.hasErrors('title')}?invalid"
+                        th:field="*{title}"
+                        th:placeholder="#{ui.tasks.create.components.inputs.task-title.placeholder}"
+                        type="text"
+                        id="title"
+                        name="title"
+                    />
+                    <span th:errors="*{title}"></span>
 
-            <label for="description">Descrição</label>
-            <textarea id="description" name="description" th:field="*{description}"></textarea>
-            <span th:errors="*{description}"></span>
+                    <label
+                        for="description"
+                        class="hide"
+                        th:text="#{ui.tasks.create.components.inputs.task-description.label}"
+                    ></label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        th:field="*{description}"
+                        th:placeholder="#{ui.tasks.create.components.inputs.task-description.placeholder}"
+                    >
+                    </textarea>
+                    <span th:errors="*{description}"></span>
 
-            <label for="points">Pontos</label>
-            <input id="points" name="points" type="range" th:field="*{points}" />
-            <span th:errors="*{points}"></span>
+                    <label
+                        for="points"
+                        th:text="#{ui.tasks.create.components.inputs.task-score.label}"
+                    ></label>
+                    <input
+                        id="points"
+                        name="points"
+                        type="range"
+                        th:field="*{points}"
+                        min="10"
+                        max="500"
+                        step="10"
+                        oninput="document.querySelector('#output-points').value=this.value"
+                    />
+                    <output id="output-points">10</output>
+                    <span th:errors="*{points}"></span>
 
-            <a href="/task">Cancelar</a>
-            <button>Salvar</button>
-        </form>
+                    <div class="action-buttons">
+                        <a
+                            class="button"
+                            href="/task"
+                            th:text="#{ui.global.components.buttons.cancel}"
+                        ></a>
+                        <button
+                            class="primary"
+                            th:text="#{ui.global.components.buttons.save}"
+                        ></button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

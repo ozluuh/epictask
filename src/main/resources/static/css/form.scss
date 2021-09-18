@@ -1,0 +1,52 @@
+.form-vertical {
+  display: flex;
+  flex-direction: column;
+
+  input[type="text"],
+  textarea {
+    background: linear-gradient(90deg, #181a1b 0%, #252a2e 100%);
+    box-shadow: inset -4px -4px 4px rgba(68, 68, 68, 0.25),
+      inset 4px 4px 4px rgba(68, 68, 68, 0.25);
+    border-radius: 10px;
+    font-family: Montserrat;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.3);
+    height: 40px;
+    padding-left: 1rem;
+    outline: none;
+
+    &:focus {
+      border: 1px solid #a650ff;
+    }
+
+    &.invalid {
+      box-shadow: 0px 0px 7px #FF0066;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    padding-top: 1rem;
+  }
+
+  input[type="range"] {
+    margin: 0.7rem 5rem;
+  }
+
+  .action-buttons {
+    margin: 0.7rem 5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+label {
+  font-weight: 300;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 0.7rem 5rem;
+}

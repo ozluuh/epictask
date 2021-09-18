@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html
+    lang="en"
+    xmlns:th="http://thymeleaf.org"
+    th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
+>
     <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=, shrink-to-fit=no"
-        />
-        <title>Tarefas</title>
+        <title th:text="#{ui.tasks.home.site.title}"></title>
     </head>
     <body>
-        <h1>EPIC TASK</h1>
-        <h2>Tarefas</h2>
+        <div id="content">
+            <span class="card" th:if="${message}" th:text="${message}"></span>
 
-        <a href="/task/new">Nova Tarefa</a>
+            <h2 th:text="#{ui.tasks.home.site.title}"></h2>
 
-        <ul th:each="task : ${tasks}">
-            <li>
-                <p th:text="${task.title}"></p>
-                <p th:text="${task.description}"></p>
-                <p th:text="${task.points}"></p>
-                <button>Pegar</button>
-            </li>
-        </ul>
+            <a
+                class="button primary"
+                th:href="@{/task/new}"
+                th:text="#{ui.global.components.buttons.new-task}"
+            ></a>
+
+            <ul th:each="task : ${tasks}">
+                <li>
+                    <p th:text="${task.title}"></p>
+                    <p th:text="${task.description}"></p>
+                    <p th:text="${task.points}"></p>
+                    <button
+                        th:text="#{ui.tasks.home.components.buttons.get-task}"
+                    ></button>
+                </li>
+            </ul>
+        </div>
     </body>
 </html>

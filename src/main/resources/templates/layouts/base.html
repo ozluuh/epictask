@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html
-    lang="en"
+    th:lang="#{ui.global.site.lang}"
     xmlns:th="http://thymeleaf.org"
     th:fragment="layout(title, content)"
 >
@@ -11,12 +11,23 @@
             name="viewport"
             content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
         />
-        <title th:replace="${title}">Titulo</title>
+        <title th:replace="${title}"></title>
         <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="stylesheet" th:href="@{/css/global.css}">
+        <link rel="stylesheet" th:href="@{/css/form.css}">
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href="#" th:text="#{ui.global.navigation.home}"></a></li>
+                <li><a href="#" th:text="#{ui.global.navigation.users}"></a></li>
+                <li><a href="#" th:text="#{ui.global.navigation.tasks}"></a></li>
+                <li><a href="#" th:text="#{ui.global.navigation.ranking}"></a></li>
+            </ul>
+        </nav>
+
         <div id="root">
-            <h1>EPIC TASK</h1>
+            <h1 th:text="#{ui.global.site.title}">EPIC TASK</h1>
             <th:block th:replace="${content}" />
         </div>
     </body>

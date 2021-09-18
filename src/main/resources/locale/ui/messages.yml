@@ -1,18 +1,3 @@
-form:
-  title: Nova tarefa
-  input:
-    task: Título
-    description: Descrição
-    points: Pontos
-
-button:
-  cancel: Cancelar
-  save: Salvar
-
-newtask:
-  success: Tarefa cadastrada com sucesso
-
-
 ui:
   global:
     site:
@@ -48,3 +33,4 @@ ui:
             placeholder: Enter task description
           task-score:
             label: Score
+  # users:
