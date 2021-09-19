@@ -1,0 +1,21 @@
+validation:
+  task:
+    title:
+      not-blank: Título é obrigatório
+    description:
+      size-min-or-between: Tamanho mínimo de {min} caracteres
+    score:
+      min: Quantidade mínima de pontos deve ser {value}
+      max: Quantidade máxima de pontos deve ser {value}
+    messages:
+      new-task-created: Tarefa criada com sucesso
+  user:
+    email:
+      valid: Informe um email válido
+    password:
+      size-min-or-between: Mínimo de {min} caracteres esperado
+    name:
+      not-blank: Nome deve ser preenchido
+      pattern-matcher: Nome não deve possuir caracteres especiais
+    messages:
+      new-user-created: Usuário criado com sucesso

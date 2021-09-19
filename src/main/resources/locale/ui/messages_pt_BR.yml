@@ -1,0 +1,68 @@
+ui:
+  global:
+    site:
+      lang: pt-BR
+      title: Epic Task # never translate this
+    navigation:
+      home: Principal
+      users: Usuário
+      tasks: Tarefas
+      ranking: Rank
+    components:
+      buttons:
+        new-task: Nova Tarefa
+        new-user: Novo Usuário
+        cancel: Cancelar
+        save: Salvar
+  tasks:
+    home:
+      site:
+        title: Tarefas
+      components:
+        buttons:
+          get-task: Pegar
+    create:
+      site:
+        title: Nova Tarefa
+      components:
+        inputs:
+          task-title:
+            label: Título
+            placeholder: Digite o título da tarefa
+          task-description:
+            label: Descrição
+            placeholder: Informe a descrição da tarefa
+          task-score:
+            label: Pontos
+  login:
+    site:
+      title: Acesso
+    components:
+      inputs:
+        login-email:
+          label: Email
+          placeholder: Digite seu email
+        login-password:
+          label: Senha
+          placeholder: Digite sua senha
+      buttons:
+        login: Acessar
+        register: Registrar
+  users:
+    home:
+      site:
+        title: Usuários
+    create:
+      site:
+        title: Novo Usuário
+      components:
+        inputs:
+          user-name:
+            label: Nome
+            placeholder: Digite seu nome aqui
+          user-email:
+            label: Email
+            placeholder: Preencha seu email
+          user-password:
+            label: Senha
+            placeholder: Informe sua senha
