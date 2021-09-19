@@ -22,7 +22,7 @@ public class Task {
 	@NotBlank(message = "{validation.task.title.not-blank}")
 	private String title;
 
-	@Size(min=10, message = "{validation.task.description.size-min-or-between}")
+	@Size(min = 10, message = "{validation.task.description.size-min-or-between}")
 	private String description;
 
 	@Min(value = 10, message = "{validation.task.score.min}")

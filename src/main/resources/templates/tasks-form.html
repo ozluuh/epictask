@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html
-    lang="en"
     xmlns:th="http://thymeleaf.org"
     th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
 >
@@ -24,7 +23,7 @@
                         th:text="#{ui.tasks.create.components.inputs.task-title.label}"
                     ></label>
                     <input
-                        th:classappend="${#fields.hasErrors('title')}?invalid"
+                        th:errorclass="invalid"
                         th:field="*{title}"
                         th:placeholder="#{ui.tasks.create.components.inputs.task-title.placeholder}"
                         type="text"
@@ -39,6 +38,7 @@
                         th:text="#{ui.tasks.create.components.inputs.task-description.label}"
                     ></label>
                     <textarea
+                        th:errorclass="invalid"
                         id="description"
                         name="description"
                         th:field="*{description}"

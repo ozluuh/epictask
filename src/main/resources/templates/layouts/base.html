@@ -19,10 +19,10 @@
     <body>
         <nav>
             <ul>
-                <li><a href="#" th:text="#{ui.global.navigation.home}"></a></li>
-                <li><a href="#" th:text="#{ui.global.navigation.users}"></a></li>
-                <li><a href="#" th:text="#{ui.global.navigation.tasks}"></a></li>
-                <li><a href="#" th:text="#{ui.global.navigation.ranking}"></a></li>
+                <li><a th:href="@{/user}" th:text="#{ui.global.navigation.home}"></a></li>
+                <li><a th:href="@{/user}" th:text="#{ui.global.navigation.users}"></a></li>
+                <li><a th:href="@{/task}" th:text="#{ui.global.navigation.tasks}"></a></li>
+                <li><a th:href="@{/task}" th:text="#{ui.global.navigation.ranking}"></a></li>
             </ul>
         </nav>
 

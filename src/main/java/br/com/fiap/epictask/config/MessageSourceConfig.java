@@ -10,9 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import dev.akkinoc.util.YamlResourceBundle;
 
@@ -27,9 +24,6 @@ public class MessageSourceConfig {
 		YamlMessageSource ms = new YamlMessageSource();
 		ms.setBasenames(basename.split(","));
 		ms.setDefaultEncoding(encoding);
-		ms.setAlwaysUseMessageFormat(true);
-		ms.setUseCodeAsDefaultMessage(true);
-		ms.setFallbackToSystemLocale(true);
 
 		return ms;
 	}
@@ -39,20 +33,6 @@ public class MessageSourceConfig {
 		LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
 		bean.setValidationMessageSource(messageSource);
 		return bean;
-	}
-
-	@Bean
-	public LocaleResolver localeResolver() {
-		SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-		localeResolver.setDefaultLocale(Locale.US);
-		return localeResolver;
-	}
-
-	@Bean
-	public LocaleChangeInterceptor localeChangeInterceptor() {
-		LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
-		localeChangeInterceptor.setParamName("lang");
-		return localeChangeInterceptor;
 	}
 }
 

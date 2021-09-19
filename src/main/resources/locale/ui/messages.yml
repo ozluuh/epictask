@@ -11,6 +11,7 @@ ui:
     components:
       buttons:
         new-task: New Task
+        new-user: New User
         cancel: Cancel
         save: Save
   tasks:
@@ -33,4 +34,35 @@ ui:
             placeholder: Enter task description
           task-score:
             label: Score
-  # users:
+  login:
+    site:
+      title: Login
+    components:
+      inputs:
+        login-email:
+          label: Email
+          placeholder: Enter your email here
+        login-password:
+          label: Password
+          placeholder: Enter your password here
+      buttons:
+        login: Login
+        register: Register
+  users:
+    home:
+      site:
+        title: Users
+    create:
+      site:
+        title: New User
+      components:
+        inputs:
+          user-name:
+            label: Name
+            placeholder: Name
+          user-email:
+            label: Email
+            placeholder: Email
+          user-password:
+            label: Password
+            placeholder: Password

@@ -1,30 +1,38 @@
 <!DOCTYPE html>
 <html
-    lang="en"
     xmlns:th="http://thymeleaf.org"
     th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
 >
     <head>
-        <title>Usuários</title>
+        <title th:text="#{ui.users.home.site.title}"></title>
     </head>
     <body>
         <div id="content">
-            <h2>Usuários</h2>
+            <h2 th:text="#{ui.users.home.site.title}"></h2>
 
-            <a href="/user/new">Novo usuário</a>
+            <a
+                th:href="@{/user/new}"
+                th:text="#{ui.global.components.buttons.new-user}"
+            ></a>
 
             <ul th:each="user : ${users}">
-                <li>
+                <li class="card">
                     <div style="display: flex; gap: 5px; align-items: center">
-                        <span>Nome: </span>
+                        <span
+                            th:text="#{ui.users.create.components.inputs.user-name.label}"
+                        ></span>
                         <p th:text="${user.name}"></p>
                     </div>
                     <div style="display: flex; gap: 5px; align-items: center">
-                        <span>E-mail: </span>
+                        <span
+                            th:text="#{ui.users.create.components.inputs.user-email.label}"
+                        ></span>
                         <p th:text="${user.email}"></p>
                     </div>
                     <div style="display: flex; gap: 5px; align-items: center">
-                        <span>Senha: </span>
+                        <span
+                            th:text="#{ui.users.create.components.inputs.user-password.label}"
+                        ></span>
                         <p th:text="${user.password}"></p>
                     </div>
                 </li>

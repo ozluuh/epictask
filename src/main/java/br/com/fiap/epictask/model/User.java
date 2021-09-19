@@ -22,10 +22,10 @@ public class User {
 	@Email(message = "{validation.user.email.valid}", regexp = "^[A-z0-9\\.]+@[A-z0-9]+\\.[A-z]{1,}\\.?[A-z]+$")
 	private String email;
 
-	@Size(min = 8, message = "{validation.password.size-min-or-between}")
+	@Size(min = 8, message = "{validation.user.password.size-min-or-between}")
 	private String password;
 
-	@NotBlank(message = "{validation.name.not-blank}")
-	@Pattern(message = "{validation.name.pattern-matcher}", regexp = "^[a-zA-ZÀ-ü\\s]+$")
+	@NotBlank(message = "{validation.user.name.not-blank}")
+	@Pattern(message = "{validation.user.name.pattern-matcher}", regexp = "^[a-zA-ZÀ-ü\\s]+$")
 	private String name;
 }
