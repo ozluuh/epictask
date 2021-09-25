@@ -7,6 +7,9 @@ validation:
     score:
       min: Minimum score is {value}
       max: Maximum score is {value}
+    status:
+      min: Minimum status is {value}
+      max: Maximum status is {value}
     messages:
       new-task-created: Task successfully created
   user:

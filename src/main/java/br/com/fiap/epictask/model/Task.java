@@ -28,4 +28,8 @@ public class Task {
 	@Min(value = 10, message = "{validation.task.score.min}")
 	@Max(value = 500, message = "{validation.task.score.max}")
 	private int points;
+
+	@Min(value = 0, message = "{validation.task.status.min}")
+	@Max(value = 100, message = "{validation.task.status.max}")
+	private int status;
 }
