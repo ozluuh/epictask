@@ -1,0 +1,22 @@
+button,
+.button {
+    background: $btn-secondary;
+    box-shadow: -2px -2px 4px rgba(98, 97, 97, 0.25), 2px 2px 4px #161616;
+    border-radius: 7px;
+    font-family: $base-font;
+    font-size: 1.2rem;
+    text-align: center;
+    color: $btn-text-secondary;
+    padding: 0.4rem 2rem;
+    cursor: pointer;
+
+    &.primary {
+        background: $btn-primary;
+        color: $btn-text-primary;
+        box-shadow: 0px 0px 7px $primary;
+    }
+
+    &.icon {
+        padding: 0.5rem;
+    }
+}
