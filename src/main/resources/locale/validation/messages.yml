@@ -20,5 +20,7 @@ validation:
     name:
       not-blank: Name must be filled
       pattern-matcher: Name has invalid characters
+    github:
+      not-blank: Github username must be filled
     messages:
       new-user-created: User successfully created

@@ -17,5 +17,7 @@ validation:
     name:
       not-blank: Nome deve ser preenchido
       pattern-matcher: Nome não deve possuir caracteres especiais
+    github:
+      not-blank: Usuário do Github deve ser informado
     messages:
       new-user-created: Usuário criado com sucesso
