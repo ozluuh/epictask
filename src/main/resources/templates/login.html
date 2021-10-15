@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html
     xmlns:th="http://thymeleaf.org"
-    th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
+    th:replace="layouts/_base :: layout(~{::title}, ~{::#content})"
 >
     <head>
         <title th:text="#{ui.login.site.title}"></title>
     </head>
     <body>
         <div id="content">
-            <h2 th:text="#{ui.login.site.title}"></h2>
+            <div class="alert error" th:if="${param.error}">Login Inválido</div>
 
-            <form action="" method="" th:object="${user}">
-                <div class="form-group">
-                    <label
-                        for="email"
-                        th:text="#{ui.login.components.inputs.login-email.label}"
-                    ></label>
-                    <input
-                        id="email"
-                        name="email"
-                        th:field="*{email}"
-                        th:placeholder="#{ui.login.components.inputs.login-email.placeholder}"
-                    />
-                    <span class="has-error"></span>
-                </div>
+            <section class="card form">
+                <h2 th:text="#{ui.login.site.title}"></h2>
 
-                <div class="form-group">
-                    <label
-                        for="password"
-                        th:text="#{ui.login.components.inputs.login-password.label}"
-                    ></label>
-                    <input
-                        id="password"
-                        name="password"
-                        type="password"
-                        th:field="*{password}"
-                        th:placeholder="#{ui.login.components.inputs.login-password.placeholder}"
-                    />
-                    <span class="has-error"></span>
-                </div>
+                <form th:action="@{/login}" method="POST" th:object="${user}">
+                    <div class="form-group">
+                        <label
+                            for="email"
+                            th:text="#{ui.login.components.inputs.login-email.label}"
+                        ></label>
+                        <input
+                            id="email"
+                            name="username"
+                            th:field="*{email}"
+                            th:placeholder="#{ui.login.components.inputs.login-email.placeholder}"
+                        />
+                        <span class="has-error"></span>
+                    </div>
 
-                <button th:text="#{ui.login.components.buttons.login}"></button>
-                <a
-                    th:href="@{/user/new}"
-                    th:text="#{ui.login.components.buttons.register}"
-                ></a>
-            </form>
+                    <div class="form-group">
+                        <label
+                            for="password"
+                            th:text="#{ui.login.components.inputs.login-password.label}"
+                        ></label>
+                        <input
+                            id="password"
+                            name="password"
+                            type="password"
+                            th:field="*{password}"
+                            th:placeholder="#{ui.login.components.inputs.login-password.placeholder}"
+                        />
+                        <span class="has-error"></span>
+                    </div>
+
+                    <button
+                        th:text="#{ui.login.components.buttons.login}"
+                    ></button>
+                    <a
+                        th:href="@{/user/new}"
+                        th:text="#{ui.login.components.buttons.register}"
+                    ></a>
+                </form>
+            </section>
         </div>
     </body>
 </html>

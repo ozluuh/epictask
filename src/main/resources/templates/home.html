@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://thymeleaf.org"
+    th:replace="layouts/_base :: layout(~{::title}, ~{::#content})"
+>
+    <head>
+        <title th:text="#{ui.home.site.title}"></title>
+    </head>
+
+    <body>
+        <div id="content">
+            <h2 th:text="#{ui.home.site.title}"></h2>
+
+            <div class="card">
+                <section style="margin: 2rem;">
+                    <p>Um sistema para controle de tarefas gameficado</p>
+                </section>
+
+                <div class="btn-group">
+                    <a href="/login" class="button primary">Acessar o sistema</a>
+                    <a href="/user/new" class="button">Criar uma conta</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

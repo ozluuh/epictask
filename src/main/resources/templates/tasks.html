@@ -1,33 +1,75 @@
 <!DOCTYPE html>
 <html
     xmlns:th="http://thymeleaf.org"
-    th:replace="layouts/base :: layout(~{::title}, ~{::#content})"
+    th:replace="layouts/_base :: layout(~{::title}, ~{::#content})"
 >
     <head>
         <title th:text="#{ui.tasks.home.site.title}"></title>
     </head>
     <body>
         <div id="content">
-            <span class="card" th:if="${message}" th:text="${message}"></span>
-
             <h2 th:text="#{ui.tasks.home.site.title}"></h2>
 
-            <a
-                class="button primary"
-                th:href="@{/task/new}"
-                th:text="#{ui.global.components.buttons.new-task}"
-            ></a>
+            <div class="alert" th:if="${message}" th:text="${message}"></div>
 
-            <ul th:each="task : ${tasks}">
-                <li>
-                    <p th:text="${task.title}"></p>
-                    <p th:text="${task.description}"></p>
-                    <p th:text="${task.points}"></p>
-                    <button
-                        th:text="#{ui.tasks.home.components.buttons.get-task}"
-                    ></button>
-                </li>
-            </ul>
+            <div class="card">
+                <nav th:include="components/_nav :: navigation('task')"></nav>
+                <a
+                    class="button primary action"
+                    th:href="@{/task/new}"
+                    th:text="#{ui.global.components.buttons.new-task}"
+                ></a>
+
+                <div class="tasks">
+                    <div class="card task" th:each="task : ${tasks}">
+                        <div>
+                            <h3 th:text="${task.title}"></h3>
+                            <span th:text="${task.points}+'pts'"></span>
+                        </div>
+                        <p th:text="${task.description}"></p>
+
+                        <div class="status">
+                            <svg>
+                                <circle cx="70" cy="70" r="70"></circle>
+                                <circle
+                                    cx="70"
+                                    cy="70"
+                                    r="70"
+                                    th:style="${'stroke-dashoffset:' + (440 - (440 * task.status )/100 )} "
+                                ></circle>
+                            </svg>
+                            <div class="number">
+                                <h2 th:text="${task.status + '%'}"></h2>
+                            </div>
+                        </div>
+
+                        <div class="task-actions">
+                            <img
+                                class="avatar"
+                                alt="owner"
+                                th:src="${task.user.avatarUrl}"
+                                th:if="${task.user}"
+                            />
+                            <a
+                                th:href="${'/task/hold/' + task.id}"
+                                class="button icon primary"
+                                th:title="#{ui.tasks.home.components.buttons.get-task}"
+                                th:unless="${task.user}"
+                            >
+                                <span class="material-icons"> back_hand </span>
+                            </a>
+                            <a
+                                th:href="${'/task/release/' + task.id}"
+                                class="button icon primary"
+                                th:title="#{ui.tasks.home.components.buttons.get-task}"
+                                th:if="${task.user == #authentication.getPrincipal()}"
+                            >
+                                <span class="material-icons"> waving_hand </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

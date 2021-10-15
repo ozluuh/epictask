@@ -9,12 +9,17 @@ import br.com.fiap.epictask.model.User;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("/login")
+@RequestMapping(value = { "/", "/login" })
 @RequiredArgsConstructor
 public class LoginController {
 
-	@GetMapping
+	@GetMapping("/login")
 	public String index(final User user) {
 		return "login";
+	}
+
+	@GetMapping("/")
+	public String home() {
+		return "home";
 	}
 }

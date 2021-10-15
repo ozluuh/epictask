@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <body>
+        <nav th:fragment="navigation(page)">
+            <ul class="menu">
+                <li>
+                    <a
+                        th:href="@{/}"
+                        th:text="#{ui.global.navigation.home}"
+                    ></a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')">
+                    <a
+                        th:href="@{/user}"
+                        th:text="#{ui.global.navigation.users}"
+                        th:classappend="${page=='user'}?active"
+                    ></a>
+                </li>
+                <li>
+                    <a
+                        th:href="@{/task}"
+                        th:text="#{ui.global.navigation.tasks}"
+                        th:classappend="${page=='task'}?active"
+                    ></a>
+                </li>
+                <li>
+                    <a
+                        th:href="@{/task}"
+                        th:text="#{ui.global.navigation.ranking}"
+                        th:classappend="${page=='ranking'}?active"
+                    ></a>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>

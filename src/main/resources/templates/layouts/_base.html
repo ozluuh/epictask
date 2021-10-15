@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html
+    th:lang="#{ui.global.site.lang}"
+    xmlns:th="http://thymeleaf.org"
+    xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity5"
+    th:fragment="layout(title, content)"
+>
+    <head th:include="components/_head :: head(${title})"></head>
+
+    <body>
+        <header>
+            <h1 class="to-upper">Epic Task</h1>
+
+            <span th:text="${#authentication.getPrincipal().getName()}"></span>
+            <img th:src="${#authentication.getPrincipal().getName()}" alt="" class="avatar">
+
+            <a href="@{/logout}">Sair</a>
+        </header>
+
+        <div id="root">
+            <th:block th:replace="${content}" />
+        </div>
+    </body>
+</html>
