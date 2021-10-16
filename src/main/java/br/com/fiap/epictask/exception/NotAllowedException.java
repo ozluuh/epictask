@@ -1,0 +1,9 @@
+package br.com.fiap.epictask.exception;
+
+public class NotAllowedException extends RuntimeException {
+
+	public NotAllowedException(String message) {
+		super(message);
+	}
+
+}

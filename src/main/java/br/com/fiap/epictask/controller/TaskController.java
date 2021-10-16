@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,21 +33,21 @@ public class TaskController {
 	@GetMapping
 	public ModelAndView index() {
 		// View name
-		ModelAndView modelAndView = new ModelAndView("tasks");
+		final ModelAndView modelAndView = new ModelAndView("tasks");
 		// View object
-		List<Task> tasks = service.index();
+		final List<Task> tasks = service.index();
 		// Attribute
 		modelAndView.addObject("tasks", tasks);
 		return modelAndView;
 	}
 
 	@GetMapping("/new")
-	public String create(Task task) {
+	public String create(final Task task) {
 		return "tasks-form";
 	}
 
 	@PostMapping
-	public String save(@Valid final Task task, BindingResult result, RedirectAttributes redirect) {
+	public String save(@Valid final Task task, final BindingResult result, final RedirectAttributes redirect) {
 
 		if (result.hasErrors()) {
 			return "tasks-form";
@@ -59,15 +60,15 @@ public class TaskController {
 	}
 
 	@GetMapping("/hold/{id}")
-	public String hold(@PathVariable Long id){
-		// Optional<Task> optional = repository.findById(id);
+	public String hold(@PathVariable final Long id, final Authentication auth) {
+		service.hold(id, auth);
 
 		return "redirect:/task";
 	}
 
 	@GetMapping("/release/{id}")
-	public String release(@PathVariable Long id){
-		// Optional<Task> optional = repository.findById(id);
+	public String release(@PathVariable final Long id, final Authentication auth) {
+		service.release(id, auth);
 
 		return "redirect:/task";
 	}
