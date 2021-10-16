@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.epictask.model.User;
-import br.com.fiap.epictask.service.AuthenticationService;
 import br.com.fiap.epictask.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,8 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 
 	private final UserService service;
+
+	private final MessageSource messages;
 
 	@GetMapping
 	public ModelAndView index() {
@@ -48,14 +51,11 @@ public class UserController {
 			return "users-form";
 		}
 
-		String encodedPassword = AuthenticationService.getPasswordEncoder().encode(user.getPassword());
-		user.setPassword(encodedPassword);
-
-		redirect.addFlashAttribute("message");
-
 		service.save(user);
 
-		return "users";
+		redirect.addFlashAttribute("message", messages.getMessage("validation.user.messages.new-user-created", null, LocaleContextHolder.getLocale()));
+
+		return "redirect:/user";
 	}
 
 }

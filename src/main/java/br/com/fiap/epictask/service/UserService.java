@@ -20,6 +20,9 @@ public class UserService {
 	}
 
 	public User save(User user) {
+		String encodedPassword = AuthenticationService.getPasswordEncoder().encode(user.getPassword());
+		user.setPassword(encodedPassword);
+
 		return repo.save(user);
 	}
 }
