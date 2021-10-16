@@ -13,7 +13,12 @@
             <section class="card form">
                 <h2 th:text="#{ui.login.site.title}"></h2>
 
-                <form th:action="@{/login}" method="POST" th:object="${user}">
+                <form
+                    th:action="@{/login}"
+                    method="POST"
+                    th:object="${user}"
+                    class="form-vertical"
+                >
                     <div class="form-group">
                         <label
                             for="email"
@@ -43,13 +48,16 @@
                         <span class="has-error"></span>
                     </div>
 
-                    <button
-                        th:text="#{ui.login.components.buttons.login}"
-                    ></button>
-                    <a
-                        th:href="@{/user/new}"
-                        th:text="#{ui.login.components.buttons.register}"
-                    ></a>
+                    <div class="btn-group">
+                        <button
+                            th:text="#{ui.login.components.buttons.login}"
+                        ></button>
+                        <a
+                        class="btn-link"
+                            th:href="@{/user/new}"
+                            th:text="#{ui.login.components.buttons.register}"
+                        ></a>
+                    </div>
                 </form>
             </section>
         </div>

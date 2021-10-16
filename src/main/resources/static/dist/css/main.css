@@ -31,6 +31,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .action {
@@ -59,9 +60,8 @@ header {
 }
 
 button,
-.button {
-  background: #25282b;
-  box-shadow: -2px -2px 4px rgba(98, 97, 97, 0.25), 2px 2px 4px #161616;
+.button,
+.btn-link {
   border-radius: 7px;
   font-family: "Montserrat", sans-serif;
   font-size: 1.2rem;
@@ -69,6 +69,12 @@ button,
   color: #a0a0a0;
   padding: 0.4rem 2rem;
   cursor: pointer;
+}
+
+button,
+.button {
+  background: #25282b;
+  box-shadow: -2px -2px 4px rgba(98, 97, 97, 0.25), 2px 2px 4px #161616;
 }
 button.primary,
 .button.primary {
@@ -85,8 +91,14 @@ button.icon,
   display: flex;
   column-gap: 10px;
 }
-.btn-group .button {
+.btn-group button,
+.btn-group .button,
+.btn-group .btn-link {
   flex: 1;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
 }
 
 .card {
@@ -184,6 +196,9 @@ label {
 
 .form-group {
   margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 input[type=range]::-webkit-slider-runnable-track, input[type=range]::-moz-range-track, input[type=range]::-ms-track {

@@ -1,7 +1,6 @@
 button,
-.button {
-    background: $btn-secondary;
-    box-shadow: -2px -2px 4px rgba(98, 97, 97, 0.25), 2px 2px 4px #161616;
+.button,
+.btn-link {
     border-radius: 7px;
     font-family: $base-font;
     font-size: 1.2rem;
@@ -9,6 +8,12 @@ button,
     color: $btn-text-secondary;
     padding: 0.4rem 2rem;
     cursor: pointer;
+}
+
+button,
+.button {
+    background: $btn-secondary;
+    box-shadow: -2px -2px 4px rgba(98, 97, 97, 0.25), 2px 2px 4px #161616;
 
     &.primary {
         background: $btn-primary;
@@ -20,11 +25,20 @@ button,
         padding: 0.5rem;
     }
 }
+
 .btn-group {
     display: flex;
     column-gap: 10px;
 
-    .button {
+    button,
+    .button,
+    .btn-link {
         flex: 1;
+    }
+}
+
+.btn-link {
+    &:hover {
+        text-decoration: underline;
     }
 }

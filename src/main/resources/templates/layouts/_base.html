@@ -14,7 +14,7 @@
             <span th:text="${#authentication.getPrincipal().getName()}"></span>
             <img th:src="${#authentication.getPrincipal().getName()}" alt="" class="avatar">
 
-            <a href="@{/logout}">Sair</a>
+            <a href="@{/logout}" class="btn-link">Sair</a>
         </header>
 
         <div id="root">

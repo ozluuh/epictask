@@ -12,6 +12,10 @@ spring:
     admin:
       client:
         url: http://localhost:8081
+  security:
+    user:
+      name: admin
+      password: admin
 
 # actuator
 management:

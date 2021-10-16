@@ -10,7 +10,7 @@
             content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
         />
 
-        <title th:text="${title}">&middot; Epic Task</title>
+        <title th:replace="${title}">&middot; Epic Task</title>
 
         <!-- CSS -->
         <link rel="stylesheet" th:href="@{/dist/css/main.min.css}">

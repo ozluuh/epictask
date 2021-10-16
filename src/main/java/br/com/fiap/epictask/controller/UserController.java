@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.fiap.epictask.model.User;
-import br.com.fiap.epictask.repository.UserRepository;
+import br.com.fiap.epictask.service.AuthenticationService;
+import br.com.fiap.epictask.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,13 +23,16 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
 
-	private final UserRepository repository;
+	private final UserService service;
 
 	@GetMapping
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("users");
-		List<User> users = repository.findAll();
+
+		List<User> users = service.index();
+
 		modelAndView.addObject("users", users);
+
 		return modelAndView;
 	}
 
@@ -37,13 +42,19 @@ public class UserController {
 	}
 
 	@PostMapping()
-	public String save(@Valid final User user, final BindingResult result) {
+	public String save(@Valid final User user, final BindingResult result, RedirectAttributes redirect) {
 
 		if (result.hasErrors()) {
 			return "users-form";
 		}
 
-		repository.save(user);
+		String encodedPassword = AuthenticationService.getPasswordEncoder().encode(user.getPassword());
+		user.setPassword(encodedPassword);
+
+		redirect.addFlashAttribute("message");
+
+		service.save(user);
+
 		return "users";
 	}
 
