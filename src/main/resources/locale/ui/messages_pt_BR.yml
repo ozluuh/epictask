@@ -14,6 +14,16 @@ ui:
         new-user: Novo Usuário
         cancel: Cancelar
         save: Salvar
+        exit: Sair
+  home:
+    site:
+      title: Principal
+      subtitle: Engajamento para sua equipe de desenvolvimento
+      tagline: Faça o controle das atividades realizadas pela sua equipe de trabalho através de um app gamificado para equipes autogerenciáveis.
+    components:
+      buttons:
+        login: Acessar o sistema
+        register: Registre-se
   tasks:
     home:
       site:
@@ -66,3 +76,6 @@ ui:
           user-password:
             label: Senha
             placeholder: Informe sua senha
+          user-github:
+            label: Github
+            placeholder: Github

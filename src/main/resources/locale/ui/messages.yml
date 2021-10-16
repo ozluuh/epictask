@@ -14,9 +14,16 @@ ui:
         new-user: New User
         cancel: Cancel
         save: Save
+        exit: Exit
   home:
     site:
       title: Home
+      subtitle: Engagement for your development team
+      tagline: Control the activities performed by your work team through a gamified app for self-managing teams.
+    components:
+      buttons:
+        login: Login
+        register: Register
   tasks:
     home:
       site:
@@ -69,3 +76,6 @@ ui:
           user-password:
             label: Password
             placeholder: Password
+          user-github:
+            label: Github
+            placeholder: Github

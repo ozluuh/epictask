@@ -8,6 +8,10 @@ button,
     color: $btn-text-secondary;
     padding: 0.4rem 2rem;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: .5rem;
 }
 
 button,
@@ -17,7 +21,7 @@ button,
 
     &.primary {
         background: $btn-primary;
-        color: $btn-text-primary;
+        color: $white;
         box-shadow: 0px 0px 7px $primary;
     }
 
@@ -34,11 +38,5 @@ button,
     .button,
     .btn-link {
         flex: 1;
-    }
-}
-
-.btn-link {
-    &:hover {
-        text-decoration: underline;
     }
 }

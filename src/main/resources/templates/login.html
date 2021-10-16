@@ -49,14 +49,18 @@
                     </div>
 
                     <div class="btn-group">
-                        <button
-                            th:text="#{ui.login.components.buttons.login}"
-                        ></button>
-                        <a
-                        class="btn-link"
-                            th:href="@{/user/new}"
-                            th:text="#{ui.login.components.buttons.register}"
-                        ></a>
+                        <button>
+                            <span class="material-icons"> login </span>
+                            <span
+                                th:text="#{ui.login.components.buttons.login}"
+                            ></span>
+                        </button>
+                        <a class="button" th:href="@{/user/new}">
+                            <span class="material-icons"> person </span>
+                            <span
+                                th:text="#{ui.login.components.buttons.register}"
+                            ></span>
+                        </a>
                     </div>
                 </form>
             </section>

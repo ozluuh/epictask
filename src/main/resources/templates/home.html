@@ -9,17 +9,31 @@
 
     <body>
         <div id="content">
-            <h2 th:text="#{ui.home.site.title}"></h2>
+            <div class="home">
+                <div class="left">
+                    <h2 th:text="#{ui.home.site.subtitle}"></h2>
+                    <p th:text="#{ui.home.site.tagline}"></p>
 
-            <div class="card">
-                <section style="margin: 2rem;">
-                    <p>Um sistema para controle de tarefas gameficado</p>
-                </section>
+                    <div class="buttons">
+                        <a href="/login" class="button primary icon">
+                            <span class="material-icons"> login </span>
+                            <span
+                                th:text="#{ui.home.components.buttons.login}"
+                            ></span>
+                        </a>
 
-                <div class="btn-group">
-                    <a href="/login" class="button primary">Acessar o sistema</a>
-                    <a href="/user/new" class="button">Criar uma conta</a>
+                        <a href="/user/new" class="button icon">
+                            <span class="material-icons"> person </span>
+                            <span
+                                th:text="#{ui.home.components.buttons.register}"
+                            ></span>
+                        </a>
+                    </div>
                 </div>
+
+                <aside class="right">
+                    <img alt="" th:src="@{~/images/saly.svg}" />
+                </aside>
             </div>
         </div>
     </body>
