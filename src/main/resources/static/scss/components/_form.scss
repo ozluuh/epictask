@@ -30,6 +30,7 @@
 
     textarea {
         resize: vertical;
+        padding-top: 1rem;
     }
 
     input[type="range"],
@@ -43,10 +44,10 @@
         margin: 1rem;
     }
 
-    // span {
-    //     color: $form-input-invalid;
-    //     margin: 0 1rem;
-    // }
+    .error {
+        color: $form-input-invalid;
+        margin: 0 1rem;
+    }
 }
 
 .hide {

@@ -30,7 +30,7 @@
                         id="title"
                         name="title"
                     />
-                    <span th:errors="*{title}"></span>
+                    <span class="error" th:errors="*{title}"></span>
 
                     <label
                         for="description"
@@ -45,7 +45,7 @@
                         th:placeholder="#{ui.tasks.create.components.inputs.task-description.placeholder}"
                     >
                     </textarea>
-                    <span th:errors="*{description}"></span>
+                    <span class="error" th:errors="*{description}"></span>
 
                     <label
                         for="points"
@@ -62,18 +62,21 @@
                         oninput="document.querySelector('#output-points').value=this.value"
                     />
                     <output id="output-points">10</output>
-                    <span th:errors="*{points}"></span>
+                    <span class="error" th:errors="*{points}"></span>
 
                     <div class="action-buttons">
-                        <a
-                            class="button"
-                            href="/task"
-                            th:text="#{ui.global.components.buttons.cancel}"
-                        ></a>
-                        <button
-                            class="primary"
-                            th:text="#{ui.global.components.buttons.save}"
-                        ></button>
+                        <a class="button" href="/task">
+                            <span class="material-icons"> cancel </span>
+                            <span
+                                th:text="#{ui.global.components.buttons.cancel}"
+                            ></span>
+                        </a>
+                        <button class="primary">
+                            <span class="material-icons"> save </span>
+                            <span
+                                th:text="#{ui.global.components.buttons.save}"
+                            ></span>
+                        </button>
                     </div>
                 </form>
             </div>

@@ -14,11 +14,12 @@
 
             <div class="card">
                 <nav th:include="components/_nav :: navigation('task')"></nav>
-                <a
-                    class="button primary action"
-                    th:href="@{/task/new}"
-                    th:text="#{ui.global.components.buttons.new-task}"
-                ></a>
+                <a class="button primary action" th:href="@{/task/new}">
+                    <span class="material-icons"> add_circle_outline </span>
+                    <span
+                        th:text="#{ui.global.components.buttons.new-task}"
+                    ></span>
+                </a>
 
                 <div class="tasks">
                     <div class="card task" th:each="task : ${tasks}">
@@ -44,12 +45,14 @@
                         </div>
 
                         <div class="task-actions">
-                            <img
-                                class="avatar"
-                                alt="owner"
-                                th:src="${task.user.avatarUrl}"
-                                th:if="${task.user}"
-                            />
+                            <span>
+                                <img
+                                    class="avatar"
+                                    alt="owner"
+                                    th:src="${task.user.avatarUrl}"
+                                    th:if="${task.user}"
+                                />
+                            </span>
                             <a
                                 th:href="${'/task/hold/' + task.id}"
                                 class="button icon primary"
@@ -64,7 +67,9 @@
                                 th:title="#{ui.tasks.home.components.buttons.get-task}"
                                 th:if="${task.user == #authentication.getPrincipal()}"
                             >
-                                <span class="material-icons"> waving_hand </span>
+                                <span class="material-icons">
+                                    waving_hand
+                                </span>
                             </a>
                         </div>
                     </div>
