@@ -10,33 +10,38 @@
         <div id="content">
             <h2 th:text="#{ui.users.home.site.title}"></h2>
 
-            <a
-                th:href="@{/user/new}"
-                th:text="#{ui.global.components.buttons.new-user}"
-            ></a>
+            <div class="alert" th:if="${message}" th:text="${message}"></div>
 
-            <ul th:each="user : ${users}">
-                <li class="card">
-                    <div style="display: flex; gap: 5px; align-items: center">
-                        <span
-                            th:text="#{ui.users.create.components.inputs.user-name.label}"
-                        ></span>
-                        <p th:text="${user.name}"></p>
-                    </div>
-                    <div style="display: flex; gap: 5px; align-items: center">
-                        <span
-                            th:text="#{ui.users.create.components.inputs.user-email.label}"
-                        ></span>
+            <div class="card">
+                <nav th:include="components/_nav :: navigation('user')"></nav>
+            </div>
+
+            <a th:href="@{/user/new}" class="button primary action">
+                <span class="material-icons"> add_circle_outline </span>
+                <span th:text="#{ui.global.components.buttons.new-user}"></span>
+            </a>
+
+            <main class="content">
+                <div class="user" th:each="user : ${users}">
+                    <img
+                        class="avatar"
+                        th:alt="${'avatar do ' + user.name}"
+                        th:src="${user.avatarUrl}"
+                    />
+                    <div class="user-info">
+                        <h4 th:text="${user.name}"></h4>
                         <p th:text="${user.email}"></p>
                     </div>
-                    <div style="display: flex; gap: 5px; align-items: center">
-                        <span
-                            th:text="#{ui.users.create.components.inputs.user-password.label}"
-                        ></span>
-                        <p th:text="${user.password}"></p>
+                    <div class="user-action">
+                        <a th:href="${'/user/' + user.id }">
+                            <span class="material-icons yellow">create</span>
+                        </a>
+                        <a th:href="${'/user/delete/' + user.id }">
+                            <span class="material-icons red">delete</span>
+                        </a>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </main>
         </div>
     </body>
 </html>
