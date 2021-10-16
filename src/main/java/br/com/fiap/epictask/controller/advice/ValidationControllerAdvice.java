@@ -20,13 +20,14 @@ public class ValidationControllerAdvice {
 	public List<ValidationFieldError> handle(MethodArgumentNotValidException e) {
 		log.error("Error Raised: {}", e.getMessage());
 
-		ArrayList<ValidationFieldError> errors = new ArrayList<>();
+		List<ValidationFieldError> errors = new ArrayList<>();
 
 		e.getBindingResult()
 			.getFieldErrors()
 			.forEach(error ->
 				errors
-				.add(new ValidationFieldError(error.getField(), error.getDefaultMessage(), error.getRejectedValue())));
+				.add(new ValidationFieldError(error.getField(), error.getDefaultMessage(), error.getRejectedValue()))
+			);
 
 		return errors;
 	}
