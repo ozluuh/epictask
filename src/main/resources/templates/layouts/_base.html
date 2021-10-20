@@ -9,11 +9,22 @@
 
     <body>
         <header>
-            <h1 class="to-upper"><a th:href="@{/}" th:text="#{ui.global.site.title}"></a></h1>
+            <h1 class="to-upper">
+                <a th:href="@{/}" th:text="#{ui.global.site.title}"></a>
+            </h1>
 
             <div class="login-info">
-                <!-- <span th:text="${#authentication.getPrincipal().getName()}"></span> -->
-                <!-- <img th:src="${#authentication.getPrincipal().getAvatarUrl()}" alt="" class="avatar"> -->
+                <span
+                    th:text="${#authentication}"
+                ></span>
+                <span
+                    th:text="${user}"
+                ></span>
+                <!-- <img
+                    class="avatar"
+                    alt=""
+                    th:src="${#authentication.getPrincipal().getAvatarUrl()}"
+                /> -->
                 <a href="/logout" class="btn-link">
                     <span class="material-icons">logout</span>
                     <span th:text="#{ui.global.components.buttons.exit}"></span>

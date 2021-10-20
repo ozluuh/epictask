@@ -18,7 +18,9 @@ import br.com.fiap.epictask.model.User;
 import br.com.fiap.epictask.service.UserService;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 @Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
@@ -44,14 +46,16 @@ public class UserController {
 		return "users-form";
 	}
 
-	@PostMapping()
+	@PostMapping
 	public String save(@Valid final User user, final BindingResult result, RedirectAttributes redirect) {
 
 		if (result.hasErrors()) {
+			log.info("hasErrors");
 			return "users-form";
 		}
 
-		service.save(user);
+		User saved = service.save(user);
+		log.info("SavedUser: {}", saved);
 
 		redirect.addFlashAttribute("message", messages.getMessage("validation.user.messages.new-user-created", null, LocaleContextHolder.getLocale()));
 

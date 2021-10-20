@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html
+    xmlns:th="http://thymeleaf.org"
+    xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
     <body>
         <nav th:fragment="navigation(page)">
             <ul class="menu">
                 <li>
                     <a
-                        th:href="@{/}"
-                        th:text="#{ui.global.navigation.home}"
-                    ></a>
+                        th:href="@{/task}"
+                        th:classappend="${page=='task'}?active"
+                    >
+                        <span class="material-icons"> check_circle </span>
+                        <span th:text="#{ui.global.navigation.tasks}"></span>
+                    </a>
                 </li>
                 <li sec:authorize="hasRole('ROLE_ADMIN')">
                     <a
                         th:href="@{/user}"
-                        th:text="#{ui.global.navigation.users}"
                         th:classappend="${page=='user'}?active"
-                    ></a>
+                    >
+                        <span class="material-icons"> perm_identity </span>
+                        <span th:text="#{ui.global.navigation.users}"></span>
+                    </a>
                 </li>
                 <li>
                     <a
-                        th:href="@{/task}"
-                        th:text="#{ui.global.navigation.tasks}"
-                        th:classappend="${page=='task'}?active"
-                    ></a>
-                </li>
-                <li>
-                    <a
-                        th:href="@{/task}"
-                        th:text="#{ui.global.navigation.ranking}"
+                        th:href="@{/ranking}"
                         th:classappend="${page=='ranking'}?active"
-                    ></a>
+                    >
+                        <span class="material-icons"> star </span>
+                        <span th:text="#{ui.global.navigation.ranking}"></span>
+                    </a>
                 </li>
             </ul>
         </nav>

@@ -16,7 +16,6 @@
                 <form
                     th:action="@{/login}"
                     method="POST"
-                    th:object="${user}"
                     class="form-vertical"
                 >
                     <div class="form-group">
@@ -27,7 +26,6 @@
                         <input
                             id="email"
                             name="username"
-                            th:field="*{email}"
                             th:placeholder="#{ui.login.components.inputs.login-email.placeholder}"
                         />
                         <span class="has-error"></span>
@@ -42,7 +40,6 @@
                             id="password"
                             name="password"
                             type="password"
-                            th:field="*{password}"
                             th:placeholder="#{ui.login.components.inputs.login-password.placeholder}"
                         />
                         <span class="has-error"></span>
