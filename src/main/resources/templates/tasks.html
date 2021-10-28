@@ -8,8 +8,6 @@
     </head>
     <body>
         <div id="content">
-            <h2 th:text="#{ui.tasks.home.site.title}"></h2>
-
             <div class="alert" th:if="${message}" th:text="${message}"></div>
 
             <div class="card">
@@ -64,7 +62,7 @@
                             <a
                                 th:href="${'/task/release/' + task.id}"
                                 class="button icon primary"
-                                th:title="#{ui.tasks.home.components.buttons.get-task}"
+                                th:title="#{ui.tasks.home.components.buttons.drop-task}"
                                 th:if="${task.user == #authentication.getPrincipal()}"
                             >
                                 <span class="material-icons">

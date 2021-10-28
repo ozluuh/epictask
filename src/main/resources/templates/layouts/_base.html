@@ -15,16 +15,15 @@
 
             <div class="login-info">
                 <span
-                    th:text="${#authentication}"
+                    th:text="${#authentication.principal.name}"
+                    th:unless="${#authentication.name eq 'anonymousUser'}"
                 ></span>
-                <span
-                    th:text="${user}"
-                ></span>
-                <!-- <img
+                <img
                     class="avatar"
-                    alt=""
+                    th:alt="${'Avatar de ' + #authentication.principal.name}"
+                    th:unless="${#authentication.name eq 'anonymousUser'}"
                     th:src="${#authentication.getPrincipal().getAvatarUrl()}"
-                /> -->
+                />
                 <a href="/logout" class="btn-link">
                     <span class="material-icons">logout</span>
                     <span th:text="#{ui.global.components.buttons.exit}"></span>

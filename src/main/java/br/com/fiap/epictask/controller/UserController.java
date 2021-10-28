@@ -46,7 +46,11 @@ public class UserController {
 		return "users-form";
 	}
 
-	@PostMapping
+	// POST nessa rota pois foi único jeito dele funcionar
+	// Apontando no form para a rota principal (/user)
+	// ele retorna direto para o formulário de LOGIN
+	// sem fazer o POST
+	@PostMapping("/register")
 	public String save(@Valid final User user, final BindingResult result, RedirectAttributes redirect) {
 
 		if (result.hasErrors()) {

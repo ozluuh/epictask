@@ -30,7 +30,8 @@ ui:
         title: Tasks
       components:
         buttons:
-          get-task: Get
+          get-task: Get task
+          drop-task: Drop task
     create:
       site:
         title: New Task

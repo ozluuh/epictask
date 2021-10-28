@@ -59,6 +59,11 @@ header {
   border-radius: 16px;
 }
 
+.login-info {
+  display: flex;
+  align-items: center;
+}
+
 .home {
   display: flex;
   margin: 2rem;
