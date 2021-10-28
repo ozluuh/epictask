@@ -4,15 +4,15 @@
     th:replace="layouts/_base :: layout(~{::title}, ~{::#content})"
 >
     <head>
-        <title th:text="#{ui.users.create.site.title}"></title>
+        <title th:text="#{ui.users.update.site.title}"></title>
     </head>
     <body>
         <div id="content">
             <section class="card form">
-                <h2 th:text="#{ui.users.create.site.title}"></h2>
+                <h2 th:text="#{ui.users.update.site.title}"></h2>
 
                 <form
-                    th:action="@{/user/register}"
+                    th:action="@{/user/update}"
                     method="POST"
                     th:object="${user}"
                     class="form-vertical"

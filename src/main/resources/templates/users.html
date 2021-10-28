@@ -31,7 +31,7 @@
                         <p th:text="${user.email}"></p>
                     </div>
                     <div class="user-action">
-                        <a th:href="${'/user/' + user.id }">
+                        <a th:href="${'/user/' + user.id }" sec:authorize="hasRole('ROLE_ADMIN')">
                             <span class="material-icons yellow">create</span>
                         </a>
                         <a th:href="${'/user/delete/' + user.id }">

@@ -60,12 +60,7 @@ ui:
         login: Login
         register: Register
   users:
-    home:
-      site:
-        title: Users
-    create:
-      site:
-        title: New User
+    global:
       components:
         inputs:
           user-name:
@@ -80,3 +75,12 @@ ui:
           user-github:
             label: Github
             placeholder: Github
+    home:
+      site:
+        title: Users
+    create:
+      site:
+        title: New User
+    update:
+      site:
+        title: Update User

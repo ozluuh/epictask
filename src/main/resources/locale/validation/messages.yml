@@ -24,3 +24,4 @@ validation:
       not-blank: Github username must be filled
     messages:
       new-user-created: User successfully created
+      user-updated: User successfully updated

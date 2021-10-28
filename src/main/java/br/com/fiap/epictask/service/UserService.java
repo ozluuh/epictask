@@ -1,6 +1,7 @@
 package br.com.fiap.epictask.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,10 @@ public class UserService {
 		String encodedPassword = AuthenticationService.getPasswordEncoder().encode(user.getPassword());
 		user.setPassword(encodedPassword);
 
-		return repo.save(user);
+		return repo.saveAndFlush(user);
 	}
+
+    public User edit(Long id) {
+        return repo.findById(id).orElse(null);
+    }
 }
