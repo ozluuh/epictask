@@ -11,6 +11,8 @@ ui:
     components:
       buttons:
         new-task: Nova Tarefa
+        done-task: Tarefas concluídas
+        all-task: Todas as tarefas
         new-user: Novo Usuário
         cancel: Cancelar
         save: Salvar
@@ -31,6 +33,7 @@ ui:
       components:
         buttons:
           get-task: Pegar
+          drop-task: Largar Tarefa
     create:
       site:
         title: Nova Tarefa
@@ -59,12 +62,7 @@ ui:
         login: Acessar
         register: Registrar
   users:
-    home:
-      site:
-        title: Usuários
-    create:
-      site:
-        title: Novo Usuário
+    global:
       components:
         inputs:
           user-name:
@@ -79,3 +77,15 @@ ui:
           user-github:
             label: Github
             placeholder: Github
+    home:
+      site:
+        title: Usuários
+    create:
+      site:
+        title: Novo Usuário
+    update:
+      site:
+        title: Atualizar Usuário
+  ranking:
+    site:
+      title: Ranking

@@ -7,6 +7,9 @@ validation:
     score:
       min: Quantidade mínima de pontos deve ser {value}
       max: Quantidade máxima de pontos deve ser {value}
+    status:
+      min: Status mínimo é de {value}
+      max: Status máximo é de {value}
     messages:
       new-task-created: Tarefa criada com sucesso
   user:
@@ -21,3 +24,5 @@ validation:
       not-blank: Usuário do Github deve ser informado
     messages:
       new-user-created: Usuário criado com sucesso
+      user-updated: Usuário atualizado com sucesso
+      user-removed: Usuário removido com sucesso
