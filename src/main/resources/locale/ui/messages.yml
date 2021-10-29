@@ -84,3 +84,6 @@ ui:
     update:
       site:
         title: Update User
+  ranking:
+    site:
+      title: Ranking

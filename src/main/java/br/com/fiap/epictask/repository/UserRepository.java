@@ -1,5 +1,6 @@
 package br.com.fiap.epictask.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -17,4 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Page<User> findAllByEmailContains(String email, Pageable pageable);
 
     Optional<User> findByEmail(String username);
+
+	List<User> findAllByOrderByRankDesc();
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+    xmlns:th="http://thymeleaf.org"
+    th:replace="layouts/_base :: layout(~{::title}, ~{::#content})"
+>
+    <head>
+        <title th:text="#{ui.ranking.site.title}"></title>
+    </head>
+    <body>
+        <div id="content">
+            <div class="card">
+                <nav th:include="components/_nav :: navigation('ranking')"></nav>
+            </div>
+
+            <main class="content">
+                <div class="user" th:each="user : ${users}">
+                    <img
+                        class="avatar"
+                        th:alt="${'avatar do ' + user.name}"
+                        th:src="${user.avatarUrl}"
+                    />
+                    <div class="user-info">
+                        <h4 th:text="${user.name}"></h4>
+                        <p th:text="${user.email}"></p>
+                    </div>
+                    <div class="user-action">
+                        <p th:text="${user.rank}"></p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>

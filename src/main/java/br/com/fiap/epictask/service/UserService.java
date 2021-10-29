@@ -34,4 +34,8 @@ public class UserService {
 	public void remove(Long id){
 		repo.deleteById(id);
 	}
+
+    public List<User> ranking() {
+        return repo.findAllByOrderByRankDesc();
+    }
 }

@@ -51,6 +51,8 @@ public class User implements UserDetails {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Task> tasks;
 
+	private int rank;
+
 	public String getAvatarUrl() {
 		return AVATAR_GITHUB_BASE_URL + this.githubUser;
 	}
