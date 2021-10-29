@@ -21,7 +21,7 @@ public class TaskService {
 	private final TaskRepository repo;
 
 	public List<Task> index() {
-		return repo.findAll();
+		return repo.findAllByStatusLessThan(100);
 	}
 
 	public Task save(final Task task) {
@@ -64,6 +64,10 @@ public class TaskService {
 		task.setUser(null);
 
 		save(task);
+	}
+
+	public List<Task> done() {
+		return repo.findAllByStatusIs(100);
 	}
 
 }

@@ -15,4 +15,10 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByTitleContains(String title);
 
     Page<Task> findByTitleContains(String title, Pageable pageable);
+
+	// Tarefas iguais a ( = ? )
+	List<Task> findAllByStatusIs(int status);
+
+	// Tarefas menor que ( < ? )
+	List<Task> findAllByStatusLessThan(int status);
 }

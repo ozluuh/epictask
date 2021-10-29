@@ -18,6 +18,18 @@
                         th:text="#{ui.global.components.buttons.new-task}"
                     ></span>
                 </a>
+                <a class="button primary action" th:href="@{/task/done}" th:unless="${#httpServletRequest.requestURI == '/task/done'}">
+                    <span class="material-icons"> check_circle </span>
+                    <span
+                        th:text="#{ui.global.components.buttons.done-task}"
+                    ></span>
+                </a>
+                <a class="button primary action" th:href="@{/task}" th:unless="${#httpServletRequest.requestURI == '/task'}">
+                    <span class="material-icons"> dashboard </span>
+                    <span
+                        th:text="#{ui.global.components.buttons.all-task}"
+                    ></span>
+                </a>
 
                 <div class="tasks">
                     <div class="card task" th:each="task : ${tasks}">
@@ -63,7 +75,7 @@
                                 th:href="${'/task/release/' + task.id}"
                                 class="button icon primary"
                                 th:title="#{ui.tasks.home.components.buttons.drop-task}"
-                                th:if="${task.user == #authentication.getPrincipal()}"
+                                th:if="${task.user == #authentication.getPrincipal() && task.status != 100}"
                             >
                                 <span class="material-icons">
                                     waving_hand

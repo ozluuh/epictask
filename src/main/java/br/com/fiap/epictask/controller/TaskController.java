@@ -72,4 +72,15 @@ public class TaskController {
 
 		return "redirect:/task";
 	}
+
+	@GetMapping("/done")
+	public ModelAndView done() {
+		List<Task> tasksDone = service.done();
+
+		ModelAndView modelAndView = new ModelAndView("tasks");
+
+		modelAndView.addObject("tasks", tasksDone);
+
+		return modelAndView;
+	}
 }

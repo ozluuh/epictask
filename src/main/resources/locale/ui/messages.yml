@@ -11,6 +11,8 @@ ui:
     components:
       buttons:
         new-task: New Task
+        done-task: Done Tasks
+        all-task: All Tasks
         new-user: New User
         cancel: Cancel
         save: Save
