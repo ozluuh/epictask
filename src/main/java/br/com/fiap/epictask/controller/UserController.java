@@ -62,7 +62,8 @@ public class UserController {
 		User saved = service.save(user);
 		log.info("SavedUser: {}", saved);
 
-		redirect.addFlashAttribute("message", messages.getMessage("validation.user.messages.new-user-created", null, LocaleContextHolder.getLocale()));
+		redirect.addFlashAttribute("message", messages.getMessage("validation.user.messages.new-user-created", null,
+				LocaleContextHolder.getLocale()));
 
 		return "redirect:/user";
 	}
@@ -79,7 +80,7 @@ public class UserController {
 	}
 
 	@PostMapping("/update")
-	public String update(@Valid final User user, final BindingResult result, RedirectAttributes redirect){
+	public String update(@Valid final User user, final BindingResult result, RedirectAttributes redirect) {
 		if (result.hasErrors()) {
 			log.info("hasErrors");
 			return "users-update-form";
@@ -87,7 +88,18 @@ public class UserController {
 
 		service.save(user);
 
-		redirect.addFlashAttribute("message", messages.getMessage("validation.user.messages.user-updated", null, LocaleContextHolder.getLocale()));
+		redirect.addFlashAttribute("message",
+				messages.getMessage("validation.user.messages.user-updated", null, LocaleContextHolder.getLocale()));
+
+		return "redirect:/user";
+	}
+
+	@GetMapping("/delete/{id}")
+	public String remove(@PathVariable Long id, RedirectAttributes redirect) {
+		service.remove(id);
+
+		redirect.addFlashAttribute("message",
+				messages.getMessage("validation.user.messages.user-removed", null, LocaleContextHolder.getLocale()));
 
 		return "redirect:/user";
 	}

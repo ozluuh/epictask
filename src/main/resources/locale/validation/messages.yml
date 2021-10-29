@@ -25,3 +25,4 @@ validation:
     messages:
       new-user-created: User successfully created
       user-updated: User successfully updated
+      user-removed: User successfully removed

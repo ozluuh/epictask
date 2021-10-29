@@ -1,14 +1,17 @@
 package br.com.fiap.epictask.model;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -44,6 +47,9 @@ public class User implements UserDetails {
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	private Collection<Role> roles;
+
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Task> tasks;
 
 	public String getAvatarUrl() {
 		return AVATAR_GITHUB_BASE_URL + this.githubUser;

@@ -30,4 +30,8 @@ public class UserService {
     public User edit(Long id) {
         return repo.findById(id).orElse(null);
     }
+
+	public void remove(Long id){
+		repo.deleteById(id);
+	}
 }
